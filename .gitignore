@@ -2,7 +2,7 @@
 *.d
 # project specific build directory
 build/
-src/lib/InfInt.h
+src/includes/InfInt.h
 
 # Compiled Object files
 *.slo

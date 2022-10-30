@@ -1,7 +1,13 @@
 #include <iostream>
+
 #include "./includes/main.h"
+#include "./includes/InfInt.h"
+
+#include "numbers.cpp"
 
 int main(int argc, char **argv) {
-    std::cout << "Hello World!" << std::endl;
+    InfInt base = findPi("643897589");
+
+    std::cout << base << std::endl;
     return 0;
 }
