@@ -1,5 +1,5 @@
-#include "./includes/InfInt.h"
+#include <gmp.h>
 
-InfInt irrationalNumberGenerator(InfInt significantDigit) {
-    return random;
+int irrationalNumberGenerator() {
+  return 5;
 }

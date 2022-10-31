@@ -2,7 +2,9 @@
 *.d
 # project specific build directory
 build/
-src/includes/InfInt.h
+src/includes/gmp/
+*.tar.*
+gmp*/
 
 # Compiled Object files
 *.slo
