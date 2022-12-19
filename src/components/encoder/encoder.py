@@ -2,10 +2,18 @@ from util.constants import NONCE_LIMIT
 from util.func import readFile, writeEncoding, getEncoding
 from components.estimator import randomString, hasIrrationalSquareRoot
 
+def convertToAscii(text: str) -> int:
+        res = []
+        for ele in text:
+                res.append(ord(ele))
+        
+        asciiCode = "1" + "".join(str(x if len(str(x)) == 3 else f"0{x}") for x in res)
+        return int(asciiCode)
+
 def encode(fileName: str) -> None:
         # file contents
         FC = readFile(fileName)
-        decimalFC = int("".join([hex(ord(x))[2:] for x in FC]), 16)
+        asciiFC = convertToAscii(FC)
 
         # encode file
         lcd = 1
@@ -14,7 +22,7 @@ def encode(fileName: str) -> None:
         for i in range(1, NONCE_LIMIT):
                 BE = randomString(i)
 
-                scalar = decimalFC / BE
+                scalar = asciiFC / BE
 
                 if (len(str(scalar)) < len(str(lcd)) or lcd == 1) and scalar > 1:
                         lcd = scalar
@@ -25,6 +33,6 @@ def encode(fileName: str) -> None:
         # end of program, the encoding is found
         encodedFileName = fileName + ".ILOE"
 
-        print(f"Encoded File for: {decimalFC}")        
+        print(f"Encoded File for: {asciiFC}")
         writeEncoding(encodedFileName, nonce, lcd)
         print(getEncoding(nonce, lcd))
